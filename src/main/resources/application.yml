@@ -5,6 +5,11 @@ spring:
     password: tyzm4060!
     driver-class-name: org.mariadb.jdbc.Driver
 
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+
 server:
   servlet:
     jsp:
