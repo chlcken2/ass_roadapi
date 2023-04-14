@@ -15,6 +15,7 @@
 <script language="javascript">
 function init(){
 	var url = location.href;
+	console.log(url);
 	var confmKey = "U01TX0FVVEgyMDIzMDQxMzEzMzkzNTExMzY4MjM=";
 	var resultType = "4"; // 도로명주소 검색결과 화면 출력내용, 1 : 도로명, 2 : 도로명+지번+상세보기(관련지번, 관할주민센터), 3 : 도로명+상세보기(상세건물명), 4 : 도로명+지번+상세보기(관련지번, 관할주민센터, 상세건물명)
 	var inputYn= "<%=inputYn%>";
@@ -31,6 +32,7 @@ function init(){
 		}
 }
 </script>
+
 <body onload="init()">
 	<form id="form" name="form" method="post">
 		<input type="hidden" id="confmKey" name="confmKey" value=""/>
