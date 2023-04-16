@@ -1,10 +1,12 @@
 spring:
   datasource:
-    url: jdbc:mysql://192.168.1.111:3306/test?characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+    #172.30.1.74 / 192.168.1.111
+    url: jdbc:mysql://172.30.1.74:3306/test?characterEncoding=UTF-8&serverTimezone=Asia/Seoul
     username: changhyeon
     password: tyzm4060!
     driver-class-name: org.mariadb.jdbc.Driver
 
+#JSP path
   mvc:
     view:
       prefix: /WEB-INF/views/
@@ -16,6 +18,32 @@ server:
       init-parameters:
         development: true
 
+#Log
+logging:
+  level:
+    org:
+      springframework:
+        jdbc: debug
+
+# mybatis log
+    hello:
+      itemservice:
+        repository:
+          mybatis: trace
+
+#Mybatis 패키지 이름 생략
+mybatis:
+  type-aliases-package: redwoodk.ass_roadapi.dao
+
+#mybatis xml 폴더 위치 지정
+  mapper-locations:
+    classpath: mapper/**/*.xml
+
+#자바 객체 낙타표기법으로 사용 가능
+  configuration:
+    map-underscore-to-camel-case: true
+
+#road api key
 api:
   key:
   confmKey: devU01TX0FVVEgyMDIzMDQxMTA5MDUzNjExMzY3NDI=
