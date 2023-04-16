@@ -89,6 +89,7 @@
             success: function(response) {
                 alert("저장 성공");
                 document.getElementById('roadFullAddr').value = '';
+                location.reload();
             },
             error: function(xhr, status, error) {
                 alert("저장 실패");
@@ -122,7 +123,7 @@
                         tableHTML += "<td>" + item.session_id + "</td>";
                         tableHTML += "<td>" + item.created_date + "</td>";
                         tableHTML += "<td>" + item.road_full_addr + "</td>";
-                        tableHTML += "<td><button onclick='deleteItem(" + item.item_id + ")'>Delete</button></td>";
+                        tableHTML += "<td><button onclick='deleteItem(" + item.item_id + ")'> 삭제 </button></td>";
                         tableHTML += "</tr>";
                       });
                  $('#list-container').html(tableHTML);
@@ -136,7 +137,24 @@
            }
          });
        });
-       </script>
+
+       function deleteItem(itemId) {
+           if (confirm(itemId + "번 데이터를 삭제하시겠습니까?")) {
+               $.ajax({
+                   url: '/items/' + itemId,
+                   type: 'DELETE',
+                   success: function(response) {
+                   alert(itemId + "번 데이터가 삭제 되었습니다.");
+                   location.reload();
+               },
+                   error: function(xhr, status, error) {
+                   // 오류가 발생한 경우
+                   console.log(error);
+                   alert("오류가 발생했습니다.");
+                   }
+               });
+           }
+       }
 
     </script>
 </body>

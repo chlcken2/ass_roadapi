@@ -40,6 +40,7 @@ public class ItemController {
     }
 
     @DeleteMapping("/items/{teamId}")
+    @ResponseBody
     public String deleteItem(@PathVariable Long teamId) {
         itemService.deleteItem(teamId);
         return "home";
@@ -49,8 +50,6 @@ public class ItemController {
     @ResponseBody
     public List<ItemResDto> getItems( ) {
         List<ItemResDto> items = itemService.getItems();
-        log.info("items" + items);
-        log.info("000000000000000");
         return items;
     }
 }
